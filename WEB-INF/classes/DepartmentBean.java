@@ -1,4 +1,5 @@
 
+
 package beans;
 public class DepartmentBean {
     

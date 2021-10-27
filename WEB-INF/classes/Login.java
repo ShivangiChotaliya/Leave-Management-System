@@ -26,11 +26,14 @@ public class Login extends HttpServlet {
         registerBean.setEmail(username);
         registerBean.setPassword(password);
 
-        
-        if(LoginDao.validateAdmin(loginBean)){
+        int userid =LoginDao.validateAdmin(loginBean);
+
+        if(userid!=-1){
+            
             HttpSession session = req.getSession();
             session.setAttribute("username",username);
-          
+            session.setAttribute("userid", userid);
+
            res.sendRedirect("../changePassword.jsp");
         }
         else if(LoginDao.validateEmployee(registerBean)){

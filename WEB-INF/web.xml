@@ -76,6 +76,15 @@
         <servlet-name>Leave</servlet-name>
         <url-pattern>/beans/Leave</url-pattern>
      </servlet-mapping>
+
+      <servlet>
+      <servlet-name>Leave</servlet-name>
+      <servlet-class>beans.AdminHome</servlet-class>
+     </servlet>
+     <servlet-mapping>
+        <servlet-name>Leave</servlet-name>
+        <url-pattern>/beans/AdminHome</url-pattern>
+     </servlet-mapping>
     
    <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

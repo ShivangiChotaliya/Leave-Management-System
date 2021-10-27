@@ -9,7 +9,7 @@ import beans.RegisterBean;
 public class LoginDao{
    
 
-public static boolean validateAdmin(LoginBean bean){
+public static int validateAdmin(LoginBean bean){
 
     String JDBC_DRIVER ="com.mysql.jdbc.Driver";
     String DB_URL = "jdbc:mysql://localhost/db_login";
@@ -37,7 +37,10 @@ public static boolean validateAdmin(LoginBean bean){
         ResultSet rs = pst.executeQuery();
         
         if(rs.next()){
-            return true;
+            
+            int userid = rs.getInt(1);
+            
+            return userid;
         }
         
     }
@@ -45,7 +48,7 @@ public static boolean validateAdmin(LoginBean bean){
         System.out.println(e.getMessage());
         e.printStackTrace();
     } 
-    return false;
+    return -1;
 }
 public static boolean validateEmployee(RegisterBean bean){
 

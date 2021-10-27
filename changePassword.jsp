@@ -20,6 +20,18 @@
         <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
         <link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+        <style>
+            .errorWrap {
+                padding: 10px;
+                margin: 0 0 20px 0;
+                background: #fff;
+                border-left: 4px solid #dd3d36;
+                -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+            }
+
+           
+        </style>
     </head>
 
     <body>
@@ -45,8 +57,27 @@
                                 <div class="card-content">
 
                                     <div class="row">
-                                        <form class="col s12" name="chngpwd" method="post">
-
+                                        <form class="col s12" name="chngpwd" action="beans/AdminHome" method="post">
+                                            <div class="errorWrap"><strong></strong>  <label id="msgemail"  onblur="nVal();"></label> 
+                                             <label id="msgpwd"> 
+                                               
+                                                    <%
+                                                        String Result = request.getParameter("result");
+                                                        if ( Result == null )
+                                                        {
+                                                            Result =" ";
+                                                    %>
+                                                        <%= Result %>
+                                                    <%
+                                                        }
+                                                        else
+                                                        {
+                                                    %>
+                                                         <%= Result.toString() %>
+                                                    <%
+                                                        }
+                                                    %>
+                                            </div>
                                             <div class="row">
                                                 <div class="input-field col s12">
                                                     <input id="password" type="password" class="validate"
