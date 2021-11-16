@@ -85,7 +85,25 @@
         <servlet-name>Leave</servlet-name>
         <url-pattern>/beans/AdminHome</url-pattern>
      </servlet-mapping>
-    
+     <servlet>
+      <servlet-name>TakeAction</servlet-name>
+      <servlet-class>beans.TakeAction</servlet-class>
+     </servlet>
+     <servlet-mapping>
+        <servlet-name>TakeAction</servlet-name>
+        <url-pattern>/beans/TakeAction</url-pattern>
+     </servlet-mapping>
+
+   
+     <servlet>
+      <servlet-name>EditDepartment</servlet-name>
+      <servlet-class>beans.EditDepartment</servlet-class>
+     </servlet>
+     <servlet-mapping>
+        <servlet-name>EditDepartment</servlet-name>
+        <url-pattern>/beans/EditDepartment</url-pattern>
+     </servlet-mapping>
+
    <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

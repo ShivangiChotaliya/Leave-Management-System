@@ -38,11 +38,11 @@ public class AdminHome extends HttpServlet {
                     }
             }
             else{
-                res.sendRedirect("../changePassword.jsp?result=Current Password And Old Password is not same");
+                res.sendRedirect("../changePassword.jsp?result=New Password And Old Password is not same");
             }
         }
        else{
-              res.sendRedirect("../changePassword.jsp?result=Invalid Password");
+              res.sendRedirect("../changePassword.jsp?result=Current Password is invalid");
        }
     }
        

@@ -35,7 +35,7 @@
     </head>
 
     <body>
-        <%= session.getAttribute("username")%>
+        
         <%
         
             response.setHeader("Cache-Control","no-cache,no-store,must-revalidate" );

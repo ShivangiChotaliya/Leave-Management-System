@@ -2,6 +2,7 @@
 package beans;
 
 public class LeaveBean{
+    private String leaveid;
     private String leavetype;
     private String todate;
 	private String fromdate;
@@ -9,6 +10,15 @@ public class LeaveBean{
 	private String postingdate;
     private int status;
 	private String empid;
+
+    
+    public String getLeaveId(){
+        return leaveid;
+    }
+
+    public void setLeaveId(String leaveid){
+        this.leaveid=leaveid;
+    }
     
     public String getLeaveType(){
         return leavetype;

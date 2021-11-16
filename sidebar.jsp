@@ -51,10 +51,10 @@
                             class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="leaves.php">All Leaves </a></li>
-                            <li><a href="pending-leavehistory.php">Pending Leaves </a></li>
-                            <li><a href="approvedleave-history.php">Approved Leaves</a></li>
-                            <li><a href="notapproved-leaves.php">Not Approved Leaves</a></li>
+                            <li><a href="leaves.jsp">All Leaves </a></li>
+                            <li><a href="pendingLeavehistory.jsp">Pending Leaves </a></li>
+                            <li><a href="approvedleaveHistory.jsp">Approved Leaves</a></li>
+                            <li><a href="notapprovedLeaves.jsp">Not Approved Leaves</a></li>
 
                         </ul>
                     </div>
