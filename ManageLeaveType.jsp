@@ -4,11 +4,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 
 
-<% response.setHeader("Cache-Control","no-cache,no-store,must-revalidate" );
-if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); } %>
+<% 
+response.setHeader("Cache-Control","no-cache,no-store,must-revalidate" );
+if(session.getAttribute("username")==null){ 
+    response.sendRedirect("index.jsp"); 
+}
+ %>
 <%@ include file="header.jsp" %>
     <%@ include file="sidebar.jsp" %>
 
+    <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://localhost/db_login"
+    user="root"  password=""/>
+    
+    <sql:update dataSource="${snapshot}"
+    sql="DELETE FROM leavetype WHERE id =?">
+    <sql:param value="${param.id }" />
+</sql:update>
 
         <main class="mn-inner">
             <div class="row">
@@ -21,8 +33,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                             <span class="card-title">Leave Type Info</span>
 
 
-                            <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                           
 
                             <sql:query dataSource="${snapshot}" var="result">
                                 SELECT * from leavetype;
@@ -31,7 +42,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                             <table>
                                 <tr>
                                     <th>Sr no</th>
-                                    <th>Dept Name</th>
+                                    <th>Leave Type</th>
                                     <th>Creation Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -46,9 +57,9 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                         <td>
                                             <c:out value="${row.CreationDate}" />
                                         </td>
-                                        <td><a href="ManageDepartment.jsp"><i
+                                        <td><a href="EditLeaveType.jsp?id=${row.id}"><i
                                                     class="material-icons">mode_edit</i></a>
-                                            <a href="ManageDepartment.jsp"><i
+                                            <a href="ManageLeaveType.jsp?id=${row.id}" onclick="return confirm('Do you want to delete');"><i
                                                     class="material-icons">delete_forever</i></a>
                                         </td>
                                     </tr>

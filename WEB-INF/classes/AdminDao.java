@@ -10,8 +10,9 @@ import beans.AdminBean;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
- 
+import beans.LeaveTypeBean;
+import beans.RegisterBean;
+import beans.LoginBean;
         
 
 public class AdminDao {
@@ -275,6 +276,95 @@ public class AdminDao {
         return false;
     }
      
-    
+    public static boolean EditLeaveType(LeaveTypeBean bean) {
+
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/db_login";
+       
+        Connection con = null;
+
+        String USER = "root";
+        String PASS = "";
+
+        try {
+          
+            String leavetype = bean.getLeaveTypeName();
+            int id = bean.getLeaveTypeId();
+
+             DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+             Date dateobj = new Date(); 
+             String date=df.format(dateobj);
+
+           
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            String sql = "UPDATE leavetype SET LeaveType='"+leavetype+"', CreationDate='"+date+"' where id='"+id+"' ";
+
+            PreparedStatement pst = con.prepareStatement(sql);
+            
+            
+            int rs = pst.executeUpdate(sql);
+
+            if (rs > 0) {
+
+                return true;
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public static boolean EditEmployee(RegisterBean bean) {
+
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/db_login";
+       
+        Connection con = null;
+
+        String USER = "root";
+        String PASS = "";
+
+        try {
+          
+        String empname =  bean. getEname();
+        String id  =  bean. getEid();
+        String depname =  bean.getDepartment();
+        String email =   bean.getEmail();
+        String gender =  bean.getGender();
+        String date =  bean.getDob();
+        String mobile =  bean.getMobile();
+        String address = bean.getAddress();
+        String position =  bean.getPosition();
+       
+       
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            String sql = "UPDATE employee SET empname='"+empname+"', department='"+depname+"', position='"+position+"', email='"+email+"', gender='"+gender+"', mobile='"+mobile+"', dob='"+date+"', address='"+address+"' where empid='"+id+"' ";
+
+            PreparedStatement pst = con.prepareStatement(sql);
+            
+            
+            int rs = pst.executeUpdate(sql);
+
+            if (rs > 0) {
+
+                return true;
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 }

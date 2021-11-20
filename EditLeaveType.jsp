@@ -16,7 +16,7 @@
             <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
-                        <div class="page-title">Update Department</div>
+                        <div class="page-title">Update Leave Type</div>
                     </div>
                     <div class="col s12 m12 l6">
                         <div class="card">
@@ -38,16 +38,16 @@
                                                      <% int id = Integer.parseInt(request.getParameter("id"));%>
                                                     <sql:query dataSource="${snapshot}" var="result">
                                                     
-                                                        SELECT * from department where departmentId=<%=id%>;
+                                                        SELECT * from leavetype where id=<%=id%>;
                                                     </sql:query>
                                                     <c:forEach  var="row" items="${result.rows}">               
                                                    
           <div class="input-field col s12">
-         <input type="hidden" name="departmentid" value="<c:out value='${row.departmentId}' />" /> 
+         <input type="hidden" name="id" value="<c:out value='${row.id}' />" /> 
           
 
-         <input id="departmentname" type="text"  class="validate" autocomplete="off" name="departmentname" value="<c:out value='${row.departmentName}' />" required />
-                                                <label for="deptname">Department Name</label>
+         <input id="leavetype" type="text"  class="validate" autocomplete="off" name="leavetype" value="<c:out value='${row.LeaveType}' />" required />
+                                                <label for="leavetype">Leave Type</label>
                                             </div>
   
                                         </c:forEach>

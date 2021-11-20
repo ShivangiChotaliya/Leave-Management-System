@@ -11,7 +11,13 @@
 %>
 <%@ include file="header.jsp" %>
 <%@ include file="sidebar.jsp" %>
-
+<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://localhost/db_login"
+    user="root"  password=""/>
+    <% String id = request.getParameter("id");%>
+    <sql:update dataSource="${snapshot}" var="delete">
+        Delete from employee where empid =<%=id%>;
+    </sql:update>
 
             <main class="mn-inner">
                 <div class="row">
@@ -22,9 +28,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <span class="card-title">Departments Info</span>
-                                <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                url="jdbc:mysql://localhost/db_login"
-                                user="root"  password=""/>
+                               
                             
                                 <sql:query dataSource="${snapshot}" var="result">
                                     SELECT * from employee;
@@ -45,7 +49,7 @@
                                     </tr>
                                 <c:forEach  var="row" items="${result.rows}">
                                 <tr>
-                                    <td><c:out value="${row.id}"/></td>
+                                    <td><c:out value="${row.empid}"/></td>
                                     <td><c:out value="${row.empname}"/></td>
                                     <td><c:out value="${row.department}"/></td>
                                     <td><c:out value="${row.position}"/></td>
@@ -54,8 +58,8 @@
                                     <td><c:out value="${row.mobile}"/></td>
                                     <td><c:out value="${row.dob}"/></td>
                                     <td><c:out value="${row.address}"/></td>
-                                    <td><a href="ManageDepartment.jsp"><i class="material-icons">mode_edit</i></a>
-                                        <a href="ManageDepartment.jsp"><i class="material-icons">delete_forever</i></a></td>
+                                    <td><a href="EditEmployee.jsp?id=${row.empid}"><i class="material-icons">mode_edit</i></a>
+                                        <a href="manageEmployee.jsp?id=${row.empid}" onclick="return confirm('Do you want to delete');"><i class="material-icons">delete_forever</i></a></td>
                                 </tr>
                                 </c:forEach>
                                 </table>

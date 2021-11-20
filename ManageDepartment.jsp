@@ -12,6 +12,15 @@
 <%@ include file="header.jsp" %>
 <%@ include file="sidebar.jsp" %>
 
+<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://localhost/db_login"
+    user="root"  password=""/>
+    
+    <sql:update dataSource="${snapshot}"
+    sql="DELETE FROM department WHERE departmentid =?">
+    <sql:param value="${param.id }" />
+    </sql:update>
+
 
             <main class="mn-inner">
                 <div class="row">
@@ -43,7 +52,7 @@
                                     <td><c:out value="${row.departmentName}"/></td>
                                     <td><c:out value="${row.creation_date}"/></td>
                                     <td><a href="EditDepartment.jsp?id=${row.departmentId}"><i class="material-icons">mode_edit</i></a>
-                                        <a href="ManageDepartment.jsp?id=${row.departmentId}"><i class="material-icons">delete_forever</i></a></td>
+                                        <a href="ManageDepartment.jsp?id=${row.departmentId}" onclick="return confirm('Do you want to delete');"><i class="material-icons">delete_forever</i></a></td>
                                 </tr>
                                 </c:forEach>
                                 </table>

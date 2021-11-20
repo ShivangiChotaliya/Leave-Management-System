@@ -104,6 +104,24 @@
         <url-pattern>/beans/EditDepartment</url-pattern>
      </servlet-mapping>
 
+       <servlet>
+      <servlet-name>EditLeaveType</servlet-name>
+      <servlet-class>beans.EditLeaveType</servlet-class>
+     </servlet>
+     <servlet-mapping>
+        <servlet-name>EditLeaveType</servlet-name>
+        <url-pattern>/beans/EditLeaveType</url-pattern>
+     </servlet-mapping>
+
+      <servlet>
+      <servlet-name>EditEmployee</servlet-name>
+      <servlet-class>beans.EditEmployee</servlet-class>
+     </servlet>
+     <servlet-mapping>
+        <servlet-name>EditEmployee</servlet-name>
+        <url-pattern>/beans/EditEmployee</url-pattern>
+     </servlet-mapping>
+
    <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
