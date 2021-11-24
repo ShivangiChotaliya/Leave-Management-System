@@ -9,41 +9,59 @@ import javax.servlet.annotation.*;
 import beans.AdminDao;
 import beans.AdminBean;
 
-
 public class AdminHome extends HttpServlet {
-    
-    public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException,IOException
-    { 
+
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String oldPassword = req.getParameter("password");
         String newPassword = req.getParameter("newpassword");
-		String confirmPassword= req.getParameter("confirmpassword");
-        
+        String confirmPassword = req.getParameter("confirmpassword");
+
         AdminBean adminBean = new AdminBean();
         adminBean.setPassword(oldPassword);
-        adminBean.setNewPassword(newPassword);  
+        adminBean.setNewPassword(newPassword);
         HttpSession session = req.getSession();
-        int userid = (int)session.getAttribute("userid");
-        adminBean.setId(userid);
 
-       if(AdminDao.changeOldPassword(adminBean))
-       {
-            if(newPassword.equals(confirmPassword)){           
+        String userType = (String) session.getAttribute("usertype");
+        int userid = (int) session.getAttribute("userid");
 
-                    if(AdminDao.changePassword(adminBean)){
-                    
-                    res.sendRedirect("../changePassword.jsp?result=Password Change Successfully");
-                    }
-                    else{
+        if (userType.equals("Admin")) {
+            adminBean.setId(userid);
+
+            if (AdminDao.changeOldPasswordAdmin(adminBean)) {
+                if (newPassword.equals(confirmPassword)) {
+
+                    if (AdminDao.changePasswordAdmin(adminBean)) {
+
+                        res.sendRedirect("../changePassword.jsp?result=Password Change Successfully");
+                    } else {
                         res.sendRedirect("../changePassword.jsp?result=Password not changed");
                     }
+                } else {
+                    res.sendRedirect("../changePassword.jsp?result=New Password And Old Password is not same");
+                }
+            } else {
+                res.sendRedirect("../changePassword.jsp?result=Current Password is invalid");
             }
-            else{
-                res.sendRedirect("../changePassword.jsp?result=New Password And Old Password is not same");
+        } else {
+
+            adminBean.setId(userid);
+            if (AdminDao.changeOldPasswordEmployee(adminBean)) {
+                if (newPassword.equals(confirmPassword)) {
+
+                    if (AdminDao.changePasswordEmployee(adminBean)) {
+
+                        res.sendRedirect("../changePassword.jsp?result=Password Change Successfully");
+                    } else {
+                        res.sendRedirect("../changePassword.jsp?result=Password not changed");
+                    }
+                } else {
+                    res.sendRedirect("../changePassword.jsp?result=New Password And Old Password is not same");
+                }
+            } else {
+                res.sendRedirect("../changePassword.jsp?result=Current Password is invalid");
             }
         }
-       else{
-              res.sendRedirect("../changePassword.jsp?result=Current Password is invalid");
-       }
+
     }
-       
+
 }

@@ -33,13 +33,15 @@ public class Login extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute("username",username);
             session.setAttribute("userid", userid);
+            session.setAttribute("usertype","Admin");
 
            res.sendRedirect("../changePassword.jsp");
         }
-        else if(LoginDao.validateEmployee(registerBean)){
+        else if( (userid =LoginDao.validateEmployee(registerBean))!=-1){
             HttpSession session = req.getSession();
             session.setAttribute("username",username);
-          
+            session.setAttribute("userid", userid);
+            session.setAttribute("usertype","Employee");
            res.sendRedirect("../EmpLeave.jsp");
         }
         else{

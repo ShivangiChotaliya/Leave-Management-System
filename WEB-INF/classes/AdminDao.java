@@ -102,7 +102,7 @@ public class AdminDao {
         return false;
     }
 
-    public static boolean changePassword(AdminBean bean) {
+    public static boolean changePasswordAdmin(AdminBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost/db_login";
@@ -141,9 +141,48 @@ public class AdminDao {
         }
         return false;
     }
+    public static boolean changePasswordEmployee(AdminBean bean) {
+
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/db_login";
+       
+        Connection con = null;
+
+        String USER = "root";
+        String PASS = "";
+
+        try {
+          
+            String password = bean.getPassword();
+            String newPassword = bean.getNewPassword();
+            int id = bean.getId();
+           
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            String sql = "UPDATE Employee SET password = '"+ newPassword +"' where id ='"+id+"' ";
+
+            PreparedStatement pst = con.prepareStatement(sql);
+          
+            
+            int rs = pst.executeUpdate(sql);
+
+            if (rs > 0) {
+
+                return true;
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     
-    public static boolean changeOldPassword(AdminBean bean){
+    public static boolean changeOldPasswordAdmin(AdminBean bean){
 
         String JDBC_DRIVER ="com.mysql.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost/db_login";
@@ -152,11 +191,11 @@ public class AdminDao {
         
         String USER="root";
         String PASS="";
-    
+       
         try 
         {
             String password = bean.getPassword();
-            String newPassword = bean.getNewPassword();
+           // String newPassword = bean.getNewPassword();
             String id = Integer.toString(bean.getId());
             
             Class.forName(JDBC_DRIVER);
@@ -184,7 +223,48 @@ public class AdminDao {
         } 
         return false;
     }
+    public static boolean changeOldPasswordEmployee(AdminBean bean){
+
+        String JDBC_DRIVER ="com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/db_login";
     
+        Connection con = null;
+        
+        String USER="root";
+        String PASS="";
+       
+        try 
+        {
+            String password = bean.getPassword();
+           // String newPassword = bean.getNewPassword();
+            String id = Integer.toString(bean.getId());
+            
+            Class.forName(JDBC_DRIVER);
+        
+            con = DriverManager.getConnection(DB_URL,USER,PASS);
+           
+            String sql =  "SELECT * FROM employee WHERE password=? and id=? ";
+           
+
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1,password);
+            pst.setString(2,id);
+           
+            ResultSet rs = pst.executeQuery();
+           
+            if(rs.next()){
+               
+                return true;
+            }
+            
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } 
+        return false;
+    }
+
 
     public static boolean TakeAction(LeaveBean bean){
 

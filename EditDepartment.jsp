@@ -30,7 +30,7 @@
                                             <div class="input-field col s12">
                                                 
                                                    
-                                                   <form class="col s12" name="editdepartment" method="post" action="beans/EditLeaveType">
+                                                   <form class="col s12" name="editdepartment" method="post" action="beans/EditDepartment">
 
                                                     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
                                                     url="jdbc:mysql://localhost/db_login"

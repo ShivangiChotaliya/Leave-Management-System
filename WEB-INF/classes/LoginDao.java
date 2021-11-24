@@ -50,7 +50,7 @@ public static int validateAdmin(LoginBean bean){
     } 
     return -1;
 }
-public static boolean validateEmployee(RegisterBean bean){
+public static int validateEmployee(RegisterBean bean){
 
     String JDBC_DRIVER ="com.mysql.jdbc.Driver";
     String DB_URL = "jdbc:mysql://localhost/db_login";
@@ -76,7 +76,10 @@ public static boolean validateEmployee(RegisterBean bean){
         ResultSet rs = pst.executeQuery();
         
         if(rs.next()){
-            return true;
+            int userid = rs.getInt(1);
+            
+            return userid;
+           // return true;
         }
         
     }
@@ -84,7 +87,7 @@ public static boolean validateEmployee(RegisterBean bean){
         System.out.println(e.getMessage());
         e.printStackTrace();
     } 
-    return false;
+    return -1;
 }
 
 

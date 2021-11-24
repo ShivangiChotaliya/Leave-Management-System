@@ -44,9 +44,16 @@
                 response.sendRedirect("index.jsp");
             }
         %>
-
+        <% if(session.getAttribute("usertype")=="Admin") { %> 
         <%@ include file="header.jsp" %>
-            <%@ include file="sidebar.jsp" %>
+        <%@ include file="sidebar.jsp" %>
+        <%}else { %>
+            <%@ include file="../include/header.jsp" %>
+            
+            <%@ include file="../include/sidebar.jsp" %>
+        <% } %>
+
+
                 <main class="mn-inner">
                     <div class="row">
                         <div class="col s12">
