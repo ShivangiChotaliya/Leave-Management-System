@@ -23,10 +23,12 @@ public class Login extends HttpServlet {
         loginBean.setPassword(password);
 
         RegisterBean registerBean = new RegisterBean();
+        
         registerBean.setEmail(username);
         registerBean.setPassword(password);
 
         int userid =LoginDao.validateAdmin(loginBean);
+        int empid =LoginDao.validateEmployee(registerBean);
 
         if(userid!=-1){
             
@@ -40,7 +42,7 @@ public class Login extends HttpServlet {
         else if( (userid =LoginDao.validateEmployee(registerBean))!=-1){
             HttpSession session = req.getSession();
             session.setAttribute("username",username);
-            session.setAttribute("userid", userid);
+            session.setAttribute("userid", empid);
             session.setAttribute("usertype","Employee");
            res.sendRedirect("../EmpLeave.jsp");
         }

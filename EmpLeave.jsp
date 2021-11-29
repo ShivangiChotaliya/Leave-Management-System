@@ -22,19 +22,19 @@
         <link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
   
- <script>
-    //  function valid(){
-    //      var date1 = document.leave.fromdate.value;
-    //      var date2 = document.leave.todate.value;
-    //      if(date2<date1){
-    //        alert("please Enter Valid Date");
-    //        return false;
-    //      }
-    //      else{
-    //          return true;
-    //      }
-    //  }
-</script>
+ <!-- <script>
+     function valid(){
+         var date1 = document.leave.fromdate.value;
+         var date2 = document.leave.todate.value;
+         if(date2<date1){
+           alert("please Enter Valid Date");
+           return false;
+         }
+         else{
+             return true;
+         }
+     }
+</script> -->
 
     </head>
     <body>
@@ -46,6 +46,7 @@
         if(session.getAttribute("username")==null){
             response.sendRedirect("index.jsp");
         }
+        String id = request.getParameter("userid");
     %>
     
         <%@ include file="../include/header.jsp" %>

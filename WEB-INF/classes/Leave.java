@@ -14,9 +14,6 @@ public class Leave extends HttpServlet {
     
     public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException,IOException
     { 
-        
-        
-
         String leavetype = req.getParameter("leavetype");
         String fromdate = req.getParameter("fromdate");
 		String todate = req.getParameter("todate");
@@ -38,7 +35,5 @@ public class Leave extends HttpServlet {
         else{
             res.sendRedirect("../index.jsp");
         }
-
-
     }
 }

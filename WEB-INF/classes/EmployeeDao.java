@@ -39,11 +39,11 @@ public class  EmployeeDao {
             Class.forName(JDBC_DRIVER);
 
             con = DriverManager.getConnection(DB_URL, USER, PASS);
-            String empid = "1";
-            PreparedStatement pst = con.prepareStatement(empid);
+            String id = request.getParameter("id");
+          
             
-            String sql = "INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,PostingDate,Status,empid)VALUES('"+leavetype+"','"+todate+"','"+fromdate+"','"+description+"','"+date+"','"+status+"','"+empid+"')";
-             pst = con.prepareStatement(sql);
+            String sql = "INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,PostingDate,Status,empid)VALUES('"+leavetype+"','"+todate+"','"+fromdate+"','"+description+"','"+date+"','"+status+"','"+id+"')";
+            PreparedStatement pst = con.prepareStatement(sql);
             
             int rs = pst.executeUpdate(sql);
             if (rs > 0) {

@@ -36,17 +36,7 @@ public class EmpRegisterDao {
             String sql = "INSERT INTO employee(empid,empname,department,position,email,password,gender,mobile,dob,address)VALUES('"+eid+"','"+ename+"','"+department+"','"+position+"','"+email+"','"+password+"','"+gender+"','"+mobile+"','"+dob+"','"+address+"')";
 
             PreparedStatement pst = con.prepareStatement(sql);
-            // pst.setString(1, eid);
-            // pst.setString(2, ename);
-            // pst.setString(3, department);
-            // pst.setString(4, position);
-            // pst.setString(5, email);
-            // pst.setString(6, password);
-            // pst.setString(7, gender);
-            // pst.setString(8, mobile);
-            // pst.setString(9, dob);
-            // pst.setString(10, address);
-
+           
             int rs = pst.executeUpdate(sql);
 
             if (rs > 0) {

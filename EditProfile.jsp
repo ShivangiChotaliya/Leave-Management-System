@@ -1,30 +1,30 @@
-<%@ page language="java" contentType= "text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.sql.*,java.util.*,java.lang.*,java.io. *"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*,java.util.*,java.lang.*,java.io. *" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <!DOCTYPE html>
     <html lang="en">
 
+
     <head>
 
-     <!-- Title -->
-     <title>Admin | Add Employee</title>
+        <!-- Title -->
+        <title>Admin | Change Password</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta charset="UTF-8">
-    <meta name="description" content="Responsive Admin Dashboard Template" />
-     <meta name="keywords" content="admin,dashboard" />
-    <meta name="author" content="Steelcoders" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta charset="UTF-8">
+        <meta name="description" content="Responsive Admin Dashboard Template" />
+        <meta name="keywords" content="admin,dashboard" />
+        <meta name="author" content="Steelcoders" />
 
-                        <!-- Styles -->
-                        <link type="text/css" rel="stylesheet"
-                            href="assets/plugins/materialize/css/materialize.min.css" />
-                        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-                        <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
-                        <link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css" />
-                        <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Styles -->
+        <link type="text/css" rel="stylesheet" href="assets/plugins/materialize/css/materialize.min.css" />
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
+        <link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
 
-                        <script type="text/javascript">
-                            
+                        <!-- <script type="text/javascript">
                             function validate() {
 
                                 if (!document.addemp.ename.value.match(/^[a-zA-Z- ']+$/) || document.addemp.ename.value.length > 50) {
@@ -53,24 +53,17 @@
                                 }
                             }
 
-                        </script>
+                        </script> -->
 
 
                     </head>
 
-      <body>
-        
-         <header class="mn-header navbar-fixed">
-             <nav class="cyan darken-1">
-                <div class="nav-wrapper row">
-                  <section class="material-design-hamburger navigation-toggle">
-                  </section>
-                  <div class="header-title col s4">
-                     <span class="chapter-title"> Employee Leave Management System</span>
-                  </div>
-                 </div>
-            </nav>
-        </header>
+    <body>
+        <% response.setHeader("Cache-Control","no-cache,no-store,must-revalidate" );
+if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); } %>
+
+        <%@ include file="../include/header.jsp" %>
+    <%@ include file="../include/sidebar.jsp" %>
 
 
      <main class="mn-inner">
@@ -78,31 +71,37 @@
             <div class="col s12 m12 l12">
                 <div class="card">
                      <div class="card-content">
-                        <form id="example-form" method="post" name="addemp" action="beans/Register">
-                            {{#each errors}}
-                            <div class="alert alert-danger">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
-                                {{text}}
+                        <form id="example-form" method="post" name="addemp" action="EditProfile.jsp">
+                            <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+                                                    url="jdbc:mysql://localhost/db_login"
+                                                    user="root"  password=""/>
+                                                     <% String id = String.valueOf(session.getAttribute("userid"));%>
+                                                    
+                                                    <sql:query dataSource="${snapshot}" var="result">
+                                                    
+                                                        SELECT * from employee where id=<%=id%>;
+                                                    </sql:query>
+                                                    <c:forEach  var="row" items="${result.rows}">  
                              <div>
-                                <h3>Sign Up</h3>
+                               <h3> Update Employee Details</h3>
                                 <section>
                                  <div class="wizard-content">
                                    <div class="row">
                                      <div class="col m6">
                                         <div class="row">
-                                          <div class="input-field col  s12">
+                                           <div class="input-field col  s12">
                                              <label for="empcode">Employee Code(Must be unique)</label>
-                                                <input name="eid" id="empcode" type="text" autocomplete="off" required>
-                                                 <span id="empid-availability" style="font-size:12px;"></span>
-                                           </div>
+                                                <input name="eid" id="empcode" type="text" autocomplete="off" value="<c:out value='${row.empid}'/>" required> 
+                                                  <span id="empid-availability" style="font-size:12px;"></span> 
+                                            </div>  
                                            <div class="input-field col m6 s12">
                                              <label for="firstName">Employee's name</label>
-                                                <input id="firstName" name="ename" type="text" required>
+                                                <input id="firstName" name="ename" type="text" value="<c:out value='${row.empname}' />" required>
                                             </div>
 
                                             
                                              <div class="input-field col m6 s12">
-                                                <select name="department" autocomplete="off">
+                                                <select name="department" autocomplete="off" value="<c:out value='${row.department}' />">
                                                  <option value="">Select Department </option>
                                                  <%
                                                      try{
@@ -126,49 +125,29 @@
                                                 </select>
                                                 </div>
                                                 
-                                                                            <div class="input-field col s12">
-                                                                                <label for="email">Email</label>
-                                                                                <input name="email" type="email"
-                                                                                    id="email" autocomplete="off"
-                                                                                    required>
-                                                                                <span id="emailid-availability"
-                                                                                    style="font-size:12px;"></span>
-                                                                            </div>
+                                                       <div class="input-field col s12">
+                                                        <label for="email">Email</label>
+                                                        <input name="email" type="email" id="email" autocomplete="off" value="<c:out value='${row.email}' />" required>
+                                                        <span id="emailid-availability" style="font-size:12px;"></span>
+                                                        </div>
 
-                                                                            <div class="input-field col s12">
-                                                                                <label for="password">Password</label>
-                                                                                <input id="password" name="password"
-                                                                                    type="password" autocomplete="off"
-                                                                                    required>
-                                                                            </div>
+                                                       
+                                                     </div>
+                                                    </div>
 
-                                                                            <div class="input-field col s12">
-                                                                                <label for="confirm">Confirm
-                                                                                    password</label>
-                                                                                <input id="confirm"
-                                                                                    name="confirmpassword"
-                                                                                    type="password" autocomplete="off"
-                                                                                    required>
-                                                                            </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col m6">
-                                                                    <div class="row">
-                                                                        <div class="input-field col m6 s12">
-                                                                            <select name="gender" autocomplete="off">
+                                                    <div class="col m6">
+                                                        <div class="row">
+                                                            <div class="input-field col m6 s12">
+                                                                <select name="gender" autocomplete="off">
                                                                                 <option value="">Select Gender</option>
                                                                                 <option value="Male">Male</option>
                                                                                 <option value="Female">Female</option>
                                                                                 <option value="Other">Other</option>
                                                                             </select>
                                                                         </div>
-
-                                                                        <div class="input-field col m6 s12">
-
-                                                                            <input id="birthdate" name="dob" type="date"
-                                                                                autocomplete="off">
-                                                                        </div>
+                                                          <div class="input-field col m6 s12">
+                                                            <input id="birthdate" name="dob" type="date" value="<c:out value='${row.dob}' />"autocomplete="off">
+                                                               </div>
 
 
 
@@ -182,36 +161,33 @@
                                                                                 <option value="HR">HR</option>
                                                                                 <option value="Accontant">Accontant
                                                                                 </option>
-                                                                                <option value="Receptionist">
-                                                                                    Receptionist</option>
+                                                                                <option value="Receptionist"> Receptionist</option>
                                                                             </select>
                                                                         </div>
 
                                                                         <div class="input-field col s12">
                                                                             <label for="phone">Mobile number</label>
                                                                             <input id="phone" name="mobile" type="tel"
-                                                                                maxlength="10" autocomplete="off"
+                                                                                maxlength="10" autocomplete="off" value="<c:out value='${row.mobile}' />"
                                                                                 required>
                                                                         </div>
 
                                                                         <div class="input-field col m6 s12">
                                                                             <label for="address">Address</label>
                                                                             <input id="address" name="address"
-                                                                                type="text" autocomplete="off" required>
+                                                                                type="text" autocomplete="off" value="<c:out value='${row.address}' />"required>
                                                                         </div>
 
 
-
+                                                                   
 
 
                                                                         <div class="input-field col s12">
-                                                                            <input type="submit" name="Register"
-                                                                                id="add"
-                                                                                class="waves-effect waves-light btn indigo m-b-xs"
-                                                                                onclick="return validate()">
-                                                                            <div>Already have an Account <a
-                                                                                    href="index.jsp">Sign In</a>
-                                                                            </div>
+                                                                            <div class="input-field col s12">
+                                                                                <button type="submit" name="update" onclick="return validate()" class="waves-effect waves-light btn indigo m-b-xs">UPDATE</button>
+                                                                                
+                                                                                </div>
+                                                                           
                                                                         </div>
 
                                                                     </div>
@@ -223,6 +199,7 @@
 
                                                     </section>
                                                 </div>
+                                                </c:forEach>
                                             </form>
                                         </div>
                                     </div>
@@ -240,6 +217,5 @@
                         <script src="assets/js/alpha.min.js"></script>
                         <!-- <script src="assets/js/pages/form_elements.js"></script> -->
 
-                    </body>
-                   
-                    </html>
+    </body>
+    </html>
