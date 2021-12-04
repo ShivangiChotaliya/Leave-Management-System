@@ -41,8 +41,8 @@
                                 
                                 <table>
                                     <tr>
-                                        <th>Sr no</th>
-                                        <th>Dept Name</th>
+                                        <th>Department No</th>
+                                        <th>Department Name</th>
                                         <th>Creation Date</th>
                                         <th>Action</th>
                                     </tr>

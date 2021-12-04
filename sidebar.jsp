@@ -60,12 +60,9 @@
                     </div>
                 </li>
                 <li class="no-padding">
-                    <form action="beans/Logout">
-                        <input type="submit" value="Logout">
-                    </form>
-                    <a class="waves-effect waves-grey" href="logout.jsp"><i class="material-icons">exit_to_app</i>Sign
-                        Out</a>
+                    <a class="waves-effect waves-grey" href="Logout"><i class="material-icons">exit_to_app</i>Sign Out</a>
                 </li>
+
             </ul>
         </div>
     </aside>

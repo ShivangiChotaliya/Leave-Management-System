@@ -85,7 +85,7 @@
                                             <td><c:out value="${row.ToDate}"/></td>
                                             <td><c:out value="${row.FromDate}"/></td>
                                             <td><c:out value="${row.Description}"/></td>
-                                           <td><c:out value="${row.PostingDate}"/></td>
+                                           <td><c:out value="${row.PostingDate}" /></td>
                                            <td>
                                            <c:set var="status" scope="session" value="${row.Status}"/>                      
                                            <c:choose>  

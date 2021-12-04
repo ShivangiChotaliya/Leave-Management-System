@@ -8,9 +8,7 @@
 if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); } %>
 <%@ include file="header.jsp" %>
 <%@ include file="sidebar.jsp" %>
-<style>
 
-    </style>
 
   
        <main class="mn-inner">
@@ -28,7 +26,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                 url="jdbc:mysql://localhost/db_login" user="root" password="" />
 
                                  <sql:query dataSource="${snapshot}" var="result">
-                                    SELECT l.id as lid,e.empname,e.empid,e.id,l.LeaveType,l.PostingDate,l.Status 
+                                    SELECT l.leaveid as lid,e.empname,e.empid,e.id,l.LeaveType,l.PostingDate,l.Status 
                                     from leaves l, employee e
                                     where l.empid=e.empid and l.Status=-1  order by lid desc;
                                     

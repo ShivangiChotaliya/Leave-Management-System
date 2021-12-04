@@ -78,11 +78,11 @@
      </servlet-mapping>
 
       <servlet>
-      <servlet-name>Leave</servlet-name>
+      <servlet-name>AdminHome</servlet-name>
       <servlet-class>beans.AdminHome</servlet-class>
      </servlet>
      <servlet-mapping>
-        <servlet-name>Leave</servlet-name>
+        <servlet-name>AdminHome</servlet-name>
         <url-pattern>/beans/AdminHome</url-pattern>
      </servlet-mapping>
      <servlet>

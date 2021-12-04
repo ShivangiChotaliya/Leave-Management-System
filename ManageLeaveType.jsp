@@ -41,7 +41,7 @@ if(session.getAttribute("username")==null){
 
                             <table>
                                 <tr>
-                                    <th>Sr no</th>
+                                    <th>Leave Id</th>
                                     <th>Leave Type</th>
                                     <th>Creation Date</th>
                                     <th>Action</th>

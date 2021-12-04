@@ -36,7 +36,7 @@
                                 
                                 <table>
                                     <tr>
-                                        <th>Sr no</th>
+                                        <th>Employee Id</th>
                                         <th>Employee Name</th>
                                         <th>Department</th>
                                         <th>Position</th>

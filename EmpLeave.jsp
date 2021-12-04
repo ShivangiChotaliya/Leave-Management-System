@@ -1,5 +1,5 @@
 <%@ page language="java" contentType= "text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.sql.*,java.util.*,java.lang.*,java.io. *"%>
+<%@ page import="java.sql.*,java.util.*,java.lang.*,java.io.*,java.util.Date, java.text.DateFormat,java.text.SimpleDateFormat"%>
 
 
 <!DOCTYPE html>
@@ -22,23 +22,30 @@
         <link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
   
- <!-- <script>
-     function valid(){
-         var date1 = document.leave.fromdate.value;
-         var date2 = document.leave.todate.value;
-         if(date2<date1){
-           alert("please Enter Valid Date");
-           return false;
-         }
-         else{
-             return true;
-         }
-     }
-</script> -->
+  <script>
+     function check() {
+    var startDate = document.getElementById("date1").value;
+    var endDate = document.getElementById("date2").value;
+    let today = new Date().toLocaleDateString()
+    
+    if ((Date.parse(startDate) >= Date.parse(endDate))) {
+        alert("End date should be greater than Start date");
+       return false;
+    }
+    else if( today <= startDate) {
+	    alert("Enter a Valid Date");
+		return false;
+	}
+	
+	else{
+	return true;
+	}
+};
+</script> 
 
     </head>
     <body>
-       
+        
     <%
     
         response.setHeader("Cache-Control","no-cache,no-store,must-revalidate" );
@@ -46,7 +53,6 @@
         if(session.getAttribute("username")==null){
             response.sendRedirect("index.jsp");
         }
-        String id = request.getParameter("userid");
     %>
     
         <%@ include file="../include/header.jsp" %>
@@ -67,8 +73,12 @@
                                             <div class="wizard-content">
                                                 <div class="row">
                                                     <div class="col m12">
-                                                        <div class="row">
-     
+                                              
+											  <div class="row">
+											  <% int eid = (Integer)session.getAttribute("userid");
+                                                             %>
+                                                            
+     <input type="hidden" name="eid" value="<%=eid%>"/>
 
  <div class="input-field col  s12">
 <select  name="leavetype" autocomplete="off">
@@ -97,12 +107,12 @@ try{
 
 
 <div class="input-field col m6 s12">
-<label for="fromdate">From  Date</label>
-<input placeholder="" id="mask1" name="fromdate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
+<label for="fromdate">From  Date</label><br>
+<input placeholder="" id="date1" name="fromdate"  type="date" required>
 </div>
 <div class="input-field col m6 s12">
-<label for="todate">To Date</label>
-<input placeholder="" id="mask1" name="todate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
+<label for="todate">To Date</label><br>
+<input placeholder="" id="date2" name="todate"  type="date"  required>
 </div>
 <div class="input-field col m12 s12">
 <label for="birthdate">Description</label>    
@@ -110,7 +120,7 @@ try{
 <textarea id="textarea1" name="description" class="materialize-textarea" length="500" required></textarea>
 </div>
 </div>
-      <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn indigo m-b-xs" onclick="return valid()">Apply</button>                                             
+      <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn indigo m-b-xs" onclick="return check();">Apply</button>                                             
 
                                                 </div>
                                             </div>
@@ -135,7 +145,6 @@ try{
         <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
         <script src="assets/js/alpha.min.js"></script>
         <script src="assets/js/pages/form_elements.js"></script>
-          <script src="assets/js/pages/form-input-mask.js"></script>
-                <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+        
     </body>
 </html>

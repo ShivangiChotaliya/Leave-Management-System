@@ -26,8 +26,18 @@
                         <script type="text/javascript">
                             
                             function validate() {
+                                
+                                    var userDateinput = document.getElementById("birthdate").value; 
+                                    var birthDate = new Date(userDateinput);
+                                    var difference=Date.now() - birthDate.getTime(); 
+                                    var  ageDate = new Date(difference); 
+                                    var calculatedAge=   Math.abs(ageDate.getUTCFullYear() - 1970);
+                                 if(calculatedAge<18){
+                                   alert("Enter Valid Birthdate");
+                                    return false;
+                                 }
 
-                                if (!document.addemp.ename.value.match(/^[a-zA-Z- ']+$/) || document.addemp.ename.value.length > 50) {
+                                else if (!document.addemp.ename.value.match(/^[a-zA-Z- ']+$/) || document.addemp.ename.value.length > 50) {
                                     alert("Please Enter Proper Name");
                                     return false;
                                 }
@@ -47,6 +57,7 @@
                                     alert("please enter 10 digits Only");
                                     return false;
                                 }
+                                
 
                                 else {
                                     return true;
@@ -79,10 +90,10 @@
                 <div class="card">
                      <div class="card-content">
                         <form id="example-form" method="post" name="addemp" action="beans/Register">
-                            {{#each errors}}
+                           
                             <div class="alert alert-danger">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
-                                {{text}}
+                               
                              <div>
                                 <h3>Sign Up</h3>
                                 <section>
@@ -167,7 +178,7 @@
                                                                         <div class="input-field col m6 s12">
 
                                                                             <input id="birthdate" name="dob" type="date"
-                                                                                autocomplete="off">
+                                                                                autocomplete="off" required/>
                                                                         </div>
 
 

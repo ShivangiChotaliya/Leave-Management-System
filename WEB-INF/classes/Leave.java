@@ -14,12 +14,14 @@ public class Leave extends HttpServlet {
     
     public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException,IOException
     { 
+	    String empid = req.getParameter("eid");
         String leavetype = req.getParameter("leavetype");
         String fromdate = req.getParameter("fromdate");
 		String todate = req.getParameter("todate");
 		String description = req.getParameter("description");
 		
         LeaveBean leaveBean = new LeaveBean();
+		 leaveBean.setEmpId(empid);
         leaveBean.setLeaveType(leavetype);
         leaveBean.setFromDate(fromdate);
 		leaveBean.setToDate(todate);

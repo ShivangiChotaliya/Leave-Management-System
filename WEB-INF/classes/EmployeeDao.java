@@ -25,26 +25,32 @@ public class  EmployeeDao {
         String PASS = "";
 
         try {
-          
+               String empid = bean.getEmpId();
             String leavetype = bean.getLeaveType();
             String fromdate = bean.getFromDate();
             String todate = bean.getToDate();
             String description = bean.getDescription();
 
-            DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             Date dateobj = new Date(); 
             String date=df.format(dateobj);
             int status = 0;
-            
             Class.forName(JDBC_DRIVER);
 
             con = DriverManager.getConnection(DB_URL, USER, PASS);
-            String id = request.getParameter("id");
-          
+            int eid = Integer.parseInt(empid);
+            String query = "SELECT empid from employee where id=?";
+           PreparedStatement pst = con.prepareStatement(query);
+           pst.setInt(1,eid);
+           ResultSet r = pst.executeQuery();
+           String emid=null;
+           while (r.next()){
+             emid = r.getString("empid");
+           }
+            String sql = "INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,PostingDate,Status,empid)VALUES('"+leavetype+"','"+todate+"','"+fromdate+"','"+description+"','"+date+"','"+status+"','"+emid+"')";
+             pst = con.prepareStatement(sql);
             
-            String sql = "INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,PostingDate,Status,empid)VALUES('"+leavetype+"','"+todate+"','"+fromdate+"','"+description+"','"+date+"','"+status+"','"+id+"')";
-            PreparedStatement pst = con.prepareStatement(sql);
-            
+
             int rs = pst.executeUpdate(sql);
             if (rs > 0) {
 
