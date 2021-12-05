@@ -24,48 +24,36 @@
         <link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
 
-        <script type="text/javascript">
-                            
-            function validate() {
-                
-                    var userDateinput = document.getElementById("birthdate").value; 
-                    var birthDate = new Date(userDateinput);
-                    var difference=Date.now() - birthDate.getTime(); 
-                    var  ageDate = new Date(difference); 
-                    var calculatedAge=   Math.abs(ageDate.getUTCFullYear() - 1970);
-                 if(calculatedAge<18){
-                   alert("Enter Valid Birthdate");
-                    return false;
-                 }
+                        <!-- <script type="text/javascript">
+                            function validate() {
 
-                else if (!document.addemp.ename.value.match(/^[a-zA-Z- ']+$/) || document.addemp.ename.value.length > 50) {
-                    alert("Please Enter Proper Name");
-                    return false;
-                }
-                else if (!document.addemp.email.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
-                    alert("please enter valid email address");
-                    return false;
-                }
-                else if (!document.addemp.password.value.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)) {
-                    alert("Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters");
-                    return false;
-                }
-                else if (!document.addemp.conpass.value.match(document.form1.password.value)) {
-                    alert("password must be same");
-                    return false;
-                }
-                else if (!documnet.addemp.mobile.value.match(/^\d{10}$/)) {
-                    alert("please enter 10 digits Only");
-                    return false;
-                }
-                
+                                if (!document.addemp.ename.value.match(/^[a-zA-Z- ']+$/) || document.addemp.ename.value.length > 50) {
+                                    alert("Please Enter Proper Name");
+                                    return false;
+                                }
+                                else if (!document.addemp.email.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+                                    alert("please enter valid email address");
+                                    return false;
+                                }
+                                else if (!document.addemp.password.value.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)) {
+                                    alert("Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters");
+                                    return false;
+                                }
+                                else if (!document.addemp.conpass.value.match(document.form1.password.value)) {
+                                    alert("password must be same");
+                                    return false;
+                                }
+                                else if (!documnet.addemp.mobile.value.match(/^\d{10}$/)) {
+                                    alert("please enter 10 digits Only");
+                                    return false;
+                                }
 
-                else {
-                    return true;
-                }
-            }
+                                else {
+                                    return true;
+                                }
+                            }
 
-        </script>
+                        </script> -->
 
 
                     </head>
@@ -158,7 +146,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                                                             </select>
                                                                         </div>
                                                           <div class="input-field col m6 s12">
-                                                            <input id="birthdate" name="dob" type="date" value="<c:out value='${row.dob}' />"autocomplete="off" required/>
+                                                            <input id="birthdate" name="dob" type="date" value="<c:out value='${row.dob}' />"autocomplete="off">
                                                                </div>
 
 
@@ -181,13 +169,13 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                                                             <label for="phone">Mobile number</label>
                                                                             <input id="phone" name="mobile" type="tel"
                                                                                 maxlength="10" autocomplete="off" value="<c:out value='${row.mobile}' />"
-                                                                                required />  
+                                                                                required>
                                                                         </div>
 
                                                                         <div class="input-field col m6 s12">
                                                                             <label for="address">Address</label>
                                                                             <input id="address" name="address"
-                                                                                type="text" autocomplete="off" value="<c:out value='${row.address}' />"required/>
+                                                                                type="text" autocomplete="off" value="<c:out value='${row.address}' />"required>
                                                                         </div>
 
 

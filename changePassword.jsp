@@ -43,11 +43,12 @@
             if(session.getAttribute("username")==null){
                 response.sendRedirect("index.jsp");
             }
+            
         %>
         <% if(session.getAttribute("usertype") =="Admin") { %> 
         <%@ include file="header.jsp" %>
         <%@ include file="sidebar.jsp" %>
-        <%}else { %>
+        <%}if(session.getAttribute("usertype") =="Employee") { %>
             <%@ include file="../include/header.jsp" %>
             
             <%@ include file="../include/sidebar.jsp" %>

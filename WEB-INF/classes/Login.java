@@ -29,6 +29,7 @@ public class Login extends HttpServlet {
 
         int userid =LoginDao.validateAdmin(loginBean);
         int empid =LoginDao.validateEmployee(registerBean);
+        int employeeId;
 
         if(userid!=-1){
             
@@ -44,6 +45,9 @@ public class Login extends HttpServlet {
             session.setAttribute("username",username);
             session.setAttribute("userid", empid);
             session.setAttribute("usertype","Employee");
+            if( (employeeId =LoginDao.validateEmployeeForId(registerBean))!=-1){
+                session.setAttribute("employeeIdForUpdate", employeeId);
+            }
            res.sendRedirect("../EmpLeave.jsp");
         }
         else{

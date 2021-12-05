@@ -38,18 +38,30 @@ public class EditEmployee extends HttpServlet {
         editemployeebean.setDob(date);
         editemployeebean.setAddress(address);
         
+        HttpSession session = req.getSession();
+
         
         if(AdminDao.EditEmployee(editemployeebean)){
              
-           
-             res.sendRedirect("../manageEmployee.jsp");
+            System.out.println("---->" + session.getAttribute("usertype"));
+            if(session.getAttribute("usertype") =="Employee" ){
+            
+                res.setContentType("text/html");
+                PrintWriter out = res.getWriter();
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Employee Updated Successfully!');");
+                out.println("location='../EditProfile.jsp';");
+                out.println("</script>");
+              //  res.sendRedirect("../EditProfile.jsp");
+               
+    
+            }else{
+                res.sendRedirect("../manageEmployee.jsp");
+
+            }
              
            }
         
-        else{
-            
-            res.sendRedirect("../manageEmployee.jsp");
-
-        }
+       
     }
 }

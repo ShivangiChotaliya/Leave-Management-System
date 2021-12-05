@@ -26,7 +26,7 @@
 
     <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
 
-<li class="no-padding"><a class="waves-effect waves-grey" href="EditProfile.jsp"><i class="material-icons">account_box</i>My Profiles</a></li>
+<li class="no-padding"><a class="waves-effect waves-grey" href="EditProfile.jsp?id=${row.empid}"><i class="material-icons">account_box</i>My Profiles</a></li>
 <li class="no-padding"><a class="waves-effect waves-grey" href="changePassword.jsp"><i class="material-icons">settings_input_svideo</i>Change Password</a></li>
         <li class="no-padding">
             <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">apps</i>Leaves<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>

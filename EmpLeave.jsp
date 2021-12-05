@@ -23,6 +23,16 @@
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
   
   <script>
+
+// $("#EndDate").change(function () {
+//     var startDate = document.getElementById("StartDate").value;
+//     var endDate = document.getElementById("EndDate").value;
+
+//     if ((Date.parse(startDate) <= Date.parse(endDate))) {
+//         alert("End date should be greater than Start date");
+//         document.getElementById("EndDate").value = "";
+//     }
+// });
      function check() {
     var startDate = document.getElementById("date1").value;
     var endDate = document.getElementById("date2").value;
@@ -30,6 +40,7 @@
     
     if ((Date.parse(startDate) >= Date.parse(endDate))) {
         alert("End date should be greater than Start date");
+        document.getElementById("date2").value = "";
        return false;
     }
     else if( today <= startDate) {

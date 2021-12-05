@@ -88,7 +88,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                                          Class.forName("com.mysql.jdbc.Driver");
                                                          Connection con = DriverManager.getConnection("jdbc:mysql://localhost/db_login","root","");
                                                          Statement st = con.createStatement();
-                                                         String query = "select *from department";
+                                                         String query = "select * from department";
                                                          ResultSet rs = st.executeQuery(query);
                                                          while(rs.next()){
                                                      

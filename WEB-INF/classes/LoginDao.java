@@ -90,6 +90,45 @@ public static int validateEmployee(RegisterBean bean){
     return -1;
 }
 
+public static int validateEmployeeForId(RegisterBean bean){
+
+    String JDBC_DRIVER ="com.mysql.jdbc.Driver";
+    String DB_URL = "jdbc:mysql://localhost/db_login";
+
+    Connection con = null;
+    
+    String USER="root";
+    String PASS="";
+
+    try 
+    {
+        String email = bean.getEmail();
+        String password = bean.getPassword(); 
+        
+        Class.forName(JDBC_DRIVER);
+    
+        con = DriverManager.getConnection(DB_URL,USER,PASS);
+        String sql =  "SELECT * FROM employee WHERE email=? and password=? ";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1,email);
+        pst.setString(2,password);
+       
+        ResultSet rs = pst.executeQuery();
+        
+        if(rs.next()){
+            int userid = rs.getInt(2);
+            
+            return userid;
+           // return true;
+        }
+        
+    }
+    catch (Exception e) {
+        System.out.println(e.getMessage());
+        e.printStackTrace();
+    } 
+    return -1;
+}
 
 
 }
