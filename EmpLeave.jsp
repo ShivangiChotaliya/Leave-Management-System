@@ -22,37 +22,26 @@
         <link href="assets/css/alpha.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
   
-  <script>
-
-// $("#EndDate").change(function () {
-//     var startDate = document.getElementById("StartDate").value;
-//     var endDate = document.getElementById("EndDate").value;
-
-//     if ((Date.parse(startDate) <= Date.parse(endDate))) {
-//         alert("End date should be greater than Start date");
-//         document.getElementById("EndDate").value = "";
-//     }
-// });
-     function check() {
+<script>
+    function check() {
     var startDate = document.getElementById("date1").value;
     var endDate = document.getElementById("date2").value;
-    let today = new Date().toLocaleDateString()
-    
-    if ((Date.parse(startDate) >= Date.parse(endDate))) {
+    let today = new Date().toISOString().split('T')[0];
+	
+	 if (startDate >= endDate){
         alert("End date should be greater than Start date");
-        document.getElementById("date2").value = "";
        return false;
     }
-    else if( today <= startDate) {
+    else if(today >= startDate) {
 	    alert("Enter a Valid Date");
 		return false;
 	}
-	
 	else{
-	return true;
+	    return true;
 	}
+    return true;
 };
-</script> 
+</script>
 
     </head>
     <body>

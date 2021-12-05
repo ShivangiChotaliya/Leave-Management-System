@@ -31,8 +31,14 @@ public class Leave extends HttpServlet {
        
         if(EmployeeDao.ApplyLeave(leaveBean)){
            
-            
-           res.sendRedirect("../EmpLeave.jsp");
+            res.setContentType("text/html");
+            PrintWriter out = res.getWriter();
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Leave Added Successfully!');");
+            out.println("location='../EmpLeave.jsp';");
+            out.println("</script>");
+          
+          
         }
         else{
             res.sendRedirect("../index.jsp");
