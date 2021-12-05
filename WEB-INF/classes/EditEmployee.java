@@ -52,8 +52,7 @@ public class EditEmployee extends HttpServlet {
                 out.println("alert('Employee Updated Successfully!');");
                 out.println("location='../EditProfile.jsp';");
                 out.println("</script>");
-              //  res.sendRedirect("../EditProfile.jsp");
-               
+            
     
             }else{
                 res.sendRedirect("../manageEmployee.jsp");
