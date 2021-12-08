@@ -26,7 +26,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                  <sql:query dataSource="${snapshot}" var="result">
                                     SELECT l.leaveid ,e.empname,e.empid,e.id,l.LeaveType,l.PostingDate,l.Status 
                                     from leaves l, employee e
-                                    where l.empid=e.id order by l.leaveid desc;
+                                    where l.empid=e.empid order by l.leaveid desc;
                                   
                                 </sql:query>
 

@@ -27,7 +27,7 @@
                                                     SELECT l.leaveid as
                                                     lid,e.empname,e.EmpId,e.id,e.Gender,e.mobile,e.email,l.LeaveType,l.ToDate,l.FromDate,l.Description,l.PostingDate,l.Status,l.AdminRemark,l.AdminRemarkDate
                                                     from leaves l, employee e
-                                                    where l.empid=e.id and l.leaveid=<%=leaveid %>;
+                                                    where l.empid=e.empid and l.leaveid=<%=leaveid %>;
 
                                                 </sql:query>
 

@@ -8,7 +8,9 @@
 if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); } %>
 <%@ include file="header.jsp" %>
 <%@ include file="sidebar.jsp" %>
+<style>
 
+    </style>
 
   
        <main class="mn-inner">
@@ -26,10 +28,12 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                 url="jdbc:mysql://localhost/db_login" user="root" password="" />
 
                                  <sql:query dataSource="${snapshot}" var="result">
-                                    SELECT l.leaveid as lid,e.empname,e.empid,e.id,l.LeaveType,l.PostingDate,l.Status 
+                        
+                                    SELECT l.leaveid ,e.empname,e.empid,e.id,l.LeaveType,l.PostingDate,l.Status 
                                     from leaves l, employee e
-                                    where l.empid=e.empid and l.Status=-1  order by lid desc;
+                                    where l.empid=e.empid and l.Status=-1 order by l.leaveid desc;
                                     
+                                     
                                     
                                 </sql:query>
 
@@ -48,7 +52,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                     <c:forEach var="row" items="${result.rows}">
                                         <tr>
                                             <td>
-                                                <c:out value="${row.id}" />
+                                                <c:out value="${row.leaveid}" />
                                             </td>
                                             <td>
                                                 <c:out value="${row.empname}" />
@@ -76,7 +80,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                                     </c:otherwise>
                                                 </c:choose>                     
                                             </td>
-                                            <td><a href="leaveDetails.jsp?leaveid=${row.id}" class="waves-effect waves-light btn blue m-b-xs"  > View Details</a></td>
+                                            <td><a href="leaveDetails.jsp?leaveid=${row.leaveid}" class="waves-effect waves-light btn blue m-b-xs"  > View Details</a></td>
                                         </tr>
                                     </c:forEach>
                                 </table>
