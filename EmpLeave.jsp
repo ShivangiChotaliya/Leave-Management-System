@@ -1,5 +1,7 @@
 <%@ page language="java" contentType= "text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*,java.util.*,java.lang.*,java.io.*,java.util.Date, java.text.DateFormat,java.text.SimpleDateFormat"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 
 
 <!DOCTYPE html>
@@ -24,6 +26,7 @@
   
 <script>
     function check() {
+       
     var startDate = document.getElementById("date1").value;
     var endDate = document.getElementById("date2").value;
     let today = new Date().toISOString().split('T')[0];
@@ -41,6 +44,21 @@
 	}
     return true;
 };
+
+function EnableDisable(leave_type) {
+        //Reference the Button.
+        var btnSubmit = document.getElementById("file");
+ 
+        //Verify the TextBox value.
+        if (leave_type.value == "Sick Leave (SL)") {
+            //Enable the TextBox when TextBox has value.
+            btnSubmit.disabled = false;
+        } else {
+            //Disable the TextBox when TextBox is empty.
+            btnSubmit.disabled = true;
+        }
+    };
+
 </script>
 
     </head>
@@ -66,7 +84,7 @@
                     <div class="col s12 m12 l8">
                         <div class="card">
                             <div class="card-content">
-                                <form id="example-form" method="post" name="leave" action="beans/Leave">
+                                <form id="example-form" method="post" name="leave" action="beans/Leave" enctype="multipart/form-data">
                                     <div>
                                         <h3>Apply for Leave</h3>
                                         <section>
@@ -75,33 +93,27 @@
                                                     <div class="col m12">
                                               
 											  <div class="row">
-											  <% int eid = (Integer)session.getAttribute("userid");
-                                                             %>
+											  <% int eid = (Integer)session.getAttribute("userid"); %>
                                                             
-     <input type="hidden" name="eid" value="<%=eid%>"/>
+    <input type="hidden" name="eid" value="<%=eid%>" />
 
  <div class="input-field col  s12">
-<select  name="leavetype" autocomplete="off">
-<option value="">Select leave type...</option>
-<%
-try{
-    Class.forName("com.mysql.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost/db_login","root","");
-    Statement st = con.createStatement();
-    String query = "select *from leavetype";
-    ResultSet rs = st.executeQuery(query);
-    while(rs.next()){
+<select  name="leavetype" onchange="EnableDisable(this)" id="leave_type" autocomplete="off">
+<option  value="">Select leave type...</option>
+<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+url="jdbc:mysql://localhost/db_login" user="root" password="" />
 
-%>         
+ <sql:query dataSource="${snapshot}" var="result">
 
-<option><%=rs.getString("LeaveType") %></option>
-<%
-                                                         }
-                                                        }
-                                                        catch(Exception e){
+    Select lt.LeaveType FROM leavetype lt LEFT JOIN leaves l ON lt.LeaveType = l.LeaveType LEFT JOIN employee emp ON l.empid = emp.empid
+        WHERE emp.id = <%=eid%> Group By lt.LeaveType,lt.days Having Count(l.leaveid) < lt.days
+    UNION ALL
+    Select lt.LeaveType From leavetype lt WHERE lt.LeaveType NOT IN (Select l.LeaveType From leaves l JOIN employee emp ON l.empid = emp.empid where emp.id = <%=eid%>)
+</sql:query>
+<c:forEach var="row"  items="${result.rows}">
 
-                                                        }
-                                                 %>
+<option >${row.leavetype}</option>
+</c:forEach>
 </select>
 </div>
 
@@ -118,6 +130,10 @@ try{
 <label for="birthdate">Description</label>    
 
 <textarea id="textarea1" name="description" class="materialize-textarea" length="500" required></textarea>
+
+<div class="input-field col m12 s12"></div>
+    <input type="file" name="file"  id="file" class="form-control" disabled="disabled" /> 
+  </div>
 </div>
 </div>
       <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn indigo m-b-xs" onclick="return check();">Apply</button>                                             
@@ -145,6 +161,11 @@ try{
         <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
         <script src="assets/js/alpha.min.js"></script>
         <script src="assets/js/pages/form_elements.js"></script>
+        <script>
+            
+
+        </script>
         
     </body>
+    
 </html>

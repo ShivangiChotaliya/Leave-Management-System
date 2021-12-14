@@ -17,13 +17,15 @@ public class LeaveType extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException,IOException
     { 
         String leavetype= req.getParameter("leavetype");
+        int days= Integer.parseInt(req.getParameter("days"));
+
         String msg;
         res.setContentType("text/html");
 
         PrintWriter out = res.getWriter();
         LeaveTypeBean  leavetypeBean = new  LeaveTypeBean();
         leavetypeBean.setLeaveTypeName(leavetype);
-        
+        leavetypeBean.setDays(days);
         
         
         if(AdminDao.AddleaveType(leavetypeBean)){

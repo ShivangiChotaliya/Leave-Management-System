@@ -22,6 +22,11 @@
                                                 <label for="leavetype">Leave Type</label>
                                             </div>
 
+                                            <div class="input-field col s12">
+                                                <input id="days" type="number" class="validate" autocomplete="off"
+                                                    name="days" required>
+                                                <label for="days">Number of days</label>
+                                            </div>
 
 
                                             <div class="input-field col s12">

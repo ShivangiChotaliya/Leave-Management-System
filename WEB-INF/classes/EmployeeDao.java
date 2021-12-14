@@ -30,7 +30,8 @@ public class  EmployeeDao {
             String fromdate = bean.getFromDate();
             String todate = bean.getToDate();
             String description = bean.getDescription();
-
+            String image = bean.getFileName();
+           
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             Date dateobj = new Date(); 
             String date=df.format(dateobj);
@@ -39,15 +40,19 @@ public class  EmployeeDao {
 
             con = DriverManager.getConnection(DB_URL, USER, PASS);
             int eid = Integer.parseInt(empid);
+
+        
             String query = "SELECT empid from employee where id=?";
            PreparedStatement pst = con.prepareStatement(query);
            pst.setInt(1,eid);
+           
            ResultSet r = pst.executeQuery();
+           
            String emid=null;
            while (r.next()){
              emid = r.getString("empid");
            }
-            String sql = "INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,PostingDate,Status,empid)VALUES('"+leavetype+"','"+todate+"','"+fromdate+"','"+description+"','"+date+"','"+status+"','"+emid+"')";
+            String sql = "INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,PostingDate,Status,empid,Attachement)VALUES('"+leavetype+"','"+todate+"','"+fromdate+"','"+description+"','"+date+"','"+status+"','"+emid+"','"+image+"')";
              pst = con.prepareStatement(sql);
             
 

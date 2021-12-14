@@ -4,12 +4,12 @@ public class LeaveTypeBean {
     
     private int leavetypeId;
     private String leavetypeName;
+    private int days;
     private String creation_date;
 
     public int getLeaveTypeId(){
         return  leavetypeId;
     }
-
     public void setLeaveTypeId(int  leavetypeId){
         this. leavetypeId= leavetypeId;
     }
@@ -25,4 +25,11 @@ public class LeaveTypeBean {
     public void setCreationDate(String creation_date){
         this.creation_date=creation_date;
     }
+    public int getDays(){
+        return  days;
+    }
+    public void setDays(int days){
+        this. days= days;
+    }
+
 }

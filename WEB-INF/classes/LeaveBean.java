@@ -10,6 +10,7 @@ public class LeaveBean{
 	private String postingdate;
     private int status;
 	private String empid;
+   private String filename;
 
     
     public String getLeaveId(){
@@ -68,5 +69,12 @@ public class LeaveBean{
     public void setEmpId(String empid){
         this.empid=empid;
     }
-	
+    public String getFileName(){
+        return filename;
+    }
+
+    public void setFileName(String filename){
+        this.filename=filename;
+
+}
 }

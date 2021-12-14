@@ -1,6 +1,9 @@
 package beans;
 
+
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.http.HttpSession;
@@ -49,6 +52,13 @@ public class Login extends HttpServlet {
            res.sendRedirect("../EmpLeave.jsp");
         }
         else{
+            res.setContentType("text/html");
+            PrintWriter out = res.getWriter();
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Please Provide valid Email and password!');");
+            out.println("location='../index.jsp';");
+            out.println("</script>");
+          
             res.sendRedirect("../index.jsp");
         }
     }

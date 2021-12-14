@@ -32,11 +32,11 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                     url="jdbc:mysql://localhost/db_login" user="root" password="" />
     
                                      <sql:query dataSource="${snapshot}" var="result">
-                                        SELECT count(*) as res from employee;
+                                        SELECT count(*) as res1 from employee;
                                       
                                     </sql:query>
                                     <c:forEach var="row" items="${result.rows}">
-                                        <c:out value="${row.res}" />
+                                        <c:out value="${row.res1}" />
                                     </c:forEach>
                             </div>
                             <div id="sparkline-bar"></div>
@@ -51,11 +51,11 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                     url="jdbc:mysql://localhost/db_login" user="root" password="" />
     
                                      <sql:query dataSource="${snapshot}" var="result">
-                                        SELECT count(*) as res from department;
+                                        SELECT count(*) as res2 from department;
                                       
                                     </sql:query>
                                     <c:forEach var="row" items="${result.rows}">
-                                        <c:out value="${row.res}" />
+                                        <c:out value="${row.res2}" />
                                     </c:forEach>
     
                                 </div>
@@ -70,11 +70,11 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                 url="jdbc:mysql://localhost/db_login" user="root" password="" />
 
                                  <sql:query dataSource="${snapshot}" var="result">
-                                    SELECT count(*) as res from employee;
+                                    SELECT count(*) as res3 from leavetype;
                                   
                                 </sql:query>
                                 <c:forEach var="row" items="${result.rows}">
-                                    <c:out value="${row.res}" />
+                                    <c:out value="${row.res3}" />
                                 </c:forEach>
                             </div>
                             <div class="progress stats-card-progress">

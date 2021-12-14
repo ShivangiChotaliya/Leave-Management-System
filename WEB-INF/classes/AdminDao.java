@@ -72,6 +72,7 @@ public class AdminDao {
         try {
           
             String leavetypeName = bean.getLeaveTypeName();
+            String days = String.valueOf(bean.getDays());
 
             DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
             Date dateobj = new Date(); 
@@ -82,7 +83,7 @@ public class AdminDao {
 
             con = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            String sql = "INSERT INTO leavetype(LeaveType,CreationDate)VALUES('"+leavetypeName+"','"+date+"')";
+            String sql = "INSERT INTO leavetype(LeaveType,CreationDate,days)VALUES('"+leavetypeName+"','"+date+"','"+days+"')";
 
             PreparedStatement pst = con.prepareStatement(sql);
           

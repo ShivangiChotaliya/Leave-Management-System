@@ -43,8 +43,10 @@ if(session.getAttribute("username")==null){
                                 <tr>
                                     <th>Leave Id</th>
                                     <th>Leave Type</th>
+                                    <th>Days</th>
                                     <th>Creation Date</th>
                                     <th>Action</th>
+
                                 </tr>
                                 <c:forEach var="row" items="${result.rows}">
                                     <tr>
@@ -53,6 +55,9 @@ if(session.getAttribute("username")==null){
                                         </td>
                                         <td>
                                             <c:out value="${row.LeaveType}" />
+                                        </td>
+                                        <td>
+                                            <c:out value="${row.days}" />
                                         </td>
                                         <td>
                                             <c:out value="${row.CreationDate}" />
