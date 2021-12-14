@@ -20,7 +20,7 @@ public class AdminDao {
     public static boolean AddDepartment(DepartmentBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
        
         Connection con = null;
 
@@ -62,7 +62,7 @@ public class AdminDao {
     public static boolean AddleaveType(LeaveTypeBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
        
         Connection con = null;
 
@@ -106,7 +106,7 @@ public class AdminDao {
     public static boolean changePasswordAdmin(AdminBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
        
         Connection con = null;
 
@@ -145,7 +145,7 @@ public class AdminDao {
     public static boolean changePasswordEmployee(AdminBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
        
         Connection con = null;
 
@@ -186,7 +186,7 @@ public class AdminDao {
     public static boolean changeOldPasswordAdmin(AdminBean bean){
 
         String JDBC_DRIVER ="com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
     
         Connection con = null;
         
@@ -227,7 +227,7 @@ public class AdminDao {
     public static boolean changeOldPasswordEmployee(AdminBean bean){
 
         String JDBC_DRIVER ="com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
     
         Connection con = null;
         
@@ -270,7 +270,7 @@ public class AdminDao {
     public static boolean TakeAction(LeaveBean bean){
 
         String JDBC_DRIVER ="com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
     
         Connection con = null;
         
@@ -315,7 +315,7 @@ public class AdminDao {
     public static boolean EditDepartment(DepartmentBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
        
         Connection con = null;
 
@@ -360,7 +360,7 @@ public class AdminDao {
     public static boolean EditLeaveType(LeaveTypeBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
        
         Connection con = null;
 
@@ -403,7 +403,7 @@ public class AdminDao {
     public static boolean EditEmployee(RegisterBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
        
         Connection con = null;
 

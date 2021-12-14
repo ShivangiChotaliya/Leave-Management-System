@@ -22,7 +22,7 @@
                                 <div class="card-content">
                                     <span class="card-title">Leave History</span>
                                      <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                    url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                    url="jdbc:mysql://localhost/db_leave" user="root" password="" />
 
                                     <sql:query dataSource="${snapshot}" var="result">
                                         SELECT l.leaveid as lid,e.empname,e.empid,e.id,l.LeaveType,l.PostingDate,l.Status 

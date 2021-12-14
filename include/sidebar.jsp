@@ -10,7 +10,7 @@
             </div>
             <div class="sidebar-profile-info">
                 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                                    url="jdbc:mysql://localhost/db_login"
+                                                    url="jdbc:mysql://localhost/db_leave"
                                                     user="root"  password=""/>
                 <% String uid = String.valueOf(session.getAttribute("userid")); %>
                 <sql:query dataSource="${snapshot}" var="result">

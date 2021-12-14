@@ -33,7 +33,7 @@
                                                    <form class="col s12" name="editdepartment" method="post" action="beans/EditDepartment">
 
                                                     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                                    url="jdbc:mysql://localhost/db_login"
+                                                    url="jdbc:mysql://localhost/db_leave"
                                                     user="root"  password=""/>
                                                       <% int id = Integer.parseInt(request.getParameter("id")); %>
                                                     <sql:query dataSource="${snapshot}" var="result">

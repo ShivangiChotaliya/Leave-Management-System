@@ -10,7 +10,7 @@ public class EmpRegisterDao {
     public static boolean validate(RegisterBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
 
         Connection con = null;
 

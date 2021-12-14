@@ -114,11 +114,11 @@
                                             
                                              <div class="input-field col m6 s12">
                                                 <select name="department" autocomplete="off">
-                                                 <option value="">Select Department </option>
+                                                 <option value="">   Department </option>
                                                  <%
                                                      try{
                                                          Class.forName("com.mysql.jdbc.Driver");
-                                                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost/db_login","root","");
+                                                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost/db_leave","root","");
                                                          Statement st = con.createStatement();
                                                          String query = "select *from department";
                                                          ResultSet rs = st.executeQuery(query);

@@ -12,7 +12,7 @@ public class LoginDao{
 public static int validateAdmin(LoginBean bean){
 
     String JDBC_DRIVER ="com.mysql.jdbc.Driver";
-    String DB_URL = "jdbc:mysql://localhost/db_login";
+    String DB_URL = "jdbc:mysql://localhost/db_leave";
 
     Connection con = null;
     
@@ -53,7 +53,7 @@ public static int validateAdmin(LoginBean bean){
 public static int validateEmployee(RegisterBean bean){
 
     String JDBC_DRIVER ="com.mysql.jdbc.Driver";
-    String DB_URL = "jdbc:mysql://localhost/db_login";
+    String DB_URL = "jdbc:mysql://localhost/db_leave";
 
     Connection con = null;
     

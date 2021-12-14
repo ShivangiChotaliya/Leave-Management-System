@@ -13,7 +13,7 @@
 <%@ include file="sidebar.jsp" %>
 
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-    url="jdbc:mysql://localhost/db_login"
+    url="jdbc:mysql://localhost/db_leave"
     user="root"  password=""/>
     
     <sql:update dataSource="${snapshot}"
@@ -32,7 +32,7 @@
                             <div class="card-content">
                                 <span class="card-title">Departments Info</span>
                                 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                url="jdbc:mysql://localhost/db_login"
+                                url="jdbc:mysql://localhost/db_leave"
                                 user="root"  password=""/>
                             
                                 <sql:query dataSource="${snapshot}" var="result">

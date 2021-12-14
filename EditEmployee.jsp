@@ -54,7 +54,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                      <div class="card-content">
                         <form id="example-form" method="post" name="addemp" action="beans/EditEmployee">
                             <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                                    url="jdbc:mysql://localhost/db_login"
+                                                    url="jdbc:mysql://localhost/db_leave"
                                                     user="root"  password=""/>
                                                      <% String id = request.getParameter("id");%>
                                                     <sql:query dataSource="${snapshot}" var="result">
@@ -86,7 +86,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                                  <%
                                                      try{
                                                          Class.forName("com.mysql.jdbc.Driver");
-                                                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost/db_login","root","");
+                                                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost/db_leave","root","");
                                                          Statement st = con.createStatement();
                                                          String query = "select * from department";
                                                          ResultSet rs = st.executeQuery(query);

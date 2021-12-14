@@ -17,7 +17,7 @@ public class  EmployeeDao {
     public static boolean ApplyLeave(LeaveBean bean) {
 
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost/db_login";
+        String DB_URL = "jdbc:mysql://localhost/db_leave";
        
         Connection con = null;
 

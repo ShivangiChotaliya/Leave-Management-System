@@ -33,7 +33,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                 <span class="stats-counter">
 
                                     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                    url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                    url="jdbc:mysql://localhost/db_leave" user="root" password="" />
     
                                      <sql:query dataSource="${snapshot}" var="result">
                                         SELECT days from leavetype where LeaveType="Sick Leave (SL)";
@@ -52,7 +52,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                             
                                 <span class="card-title">Yearly Annual Leave</span>
                                 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                    url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                    url="jdbc:mysql://localhost/db_leave" user="root" password="" />
     
                                      <sql:query dataSource="${snapshot}" var="result">
                                         SELECT days from leavetype where LeaveType="Annual Leave";
@@ -72,7 +72,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                             <div class="card-content">
                                 <span class="card-title">Yearly Early Leave</span>
                                 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                url="jdbc:mysql://localhost/db_leave" user="root" password="" />
 
                                  <sql:query dataSource="${snapshot}" var="result">
                                     SELECT days from leavetype where LeaveType="Early Leave";
@@ -101,7 +101,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                 <span class="stats-counter">
 
                                     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                    url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                    url="jdbc:mysql://localhost/db_leave" user="root" password="" />
     
                                      <sql:query dataSource="${snapshot}" var="result">
                                         Select COUNT(l.empid) as cnt
@@ -123,7 +123,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                             
                                 <span class="card-title">Used Annual Leave</span>
                                 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                    url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                    url="jdbc:mysql://localhost/db_leave" user="root" password="" />
     
                                      <sql:query dataSource="${snapshot}" var="result">
                                         Select COUNT(l.empid) as cnt
@@ -148,7 +148,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                             <div class="card-content">
                                 <span class="card-title">Used Early Leave</span>
                                 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                url="jdbc:mysql://localhost/db_leave" user="root" password="" />
 
                                  <sql:query dataSource="${snapshot}" var="result">
                                       Select COUNT(l.empid) as cnt

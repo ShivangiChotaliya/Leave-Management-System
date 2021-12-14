@@ -81,18 +81,6 @@
                                 <li class="notification-drop-title">Notifications</li>
 
 
-
-                                <li>
-                                    <a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>">
-                                        <div class="notification">
-                                            <div class="notification-icon circle cyan"><i
-                                                    class="material-icons">done</i></div>
-                                        </div>
-                                    </a>
-                                </li>
-
-
-
                             </ul>
                 </div>
             </nav>

@@ -66,7 +66,7 @@
                                  
                                     <tbody>
                                         <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                                    url="jdbc:mysql://localhost/db_login"
+                                                    url="jdbc:mysql://localhost/db_leave"
                                                     user="root"  password=""/>
                 <% String id = request.getParameter("id"); %>
                

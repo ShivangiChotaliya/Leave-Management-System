@@ -25,7 +25,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                 <span class="card-title">Leave History</span>
                                                               
                                 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                url="jdbc:mysql://localhost/db_leave" user="root" password="" />
 
                                  <sql:query dataSource="${snapshot}" var="result">
                         

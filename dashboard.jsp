@@ -29,7 +29,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                 <span class="stats-counter">
 
                                     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                    url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                    url="jdbc:mysql://localhost/db_leave" user="root" password="" />
     
                                      <sql:query dataSource="${snapshot}" var="result">
                                         SELECT count(*) as res1 from employee;
@@ -48,7 +48,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                             
                                 <span class="card-title">Listed Departments </span>
                                 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                    url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                    url="jdbc:mysql://localhost/db_leave" user="root" password="" />
     
                                      <sql:query dataSource="${snapshot}" var="result">
                                         SELECT count(*) as res2 from department;
@@ -67,7 +67,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                             <div class="card-content">
                                 <span class="card-title">Listed leave Type</span>
                                 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                url="jdbc:mysql://localhost/db_leave" user="root" password="" />
 
                                  <sql:query dataSource="${snapshot}" var="result">
                                     SELECT count(*) as res3 from leavetype;
@@ -91,7 +91,7 @@ if(session.getAttribute("username")==null){ response.sendRedirect("index.jsp"); 
                                  
                                     <span class="card-title">Latest Leave Applications</span>
                                     <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-                                    url="jdbc:mysql://localhost/db_login" user="root" password="" />
+                                    url="jdbc:mysql://localhost/db_leave" user="root" password="" />
     
                                      <sql:query dataSource="${snapshot}" var="result">
                                         SELECT l.leaveid ,e.empname,e.empid,e.id,l.LeaveType,l.PostingDate,l.Status 
