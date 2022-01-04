@@ -89,7 +89,7 @@
                                            <td>
                                            <c:set var="status" scope="session" value="${row.Status}"/>                      
                                            <c:choose>  
-                                            <c:when test="${status == 0}">  
+                                            <c:when test="${status == -1}">  
                                                 <span style="color: blue">Waiting For Approval </span>
                                              </c:when>  
                                              <c:when test="${status == 1}">  

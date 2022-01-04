@@ -47,7 +47,7 @@
                                             <tr>
                                             
                                                 <td>
-                                                    <c:out value="${row.leaveid}" />
+                                                    <c:out value="${row.lid}" />
                                                 
                                                 </td>
                                                 <td>

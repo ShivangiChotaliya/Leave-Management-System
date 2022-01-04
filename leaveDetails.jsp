@@ -14,7 +14,9 @@
                                     <div class="col s12">
                                         <div class="page-title" style="font-size:24px;">Leave Details</div>
                                     </div>
-                                    <% String leaveid = request.getParameter("leaveid"); %>
+                                    <% String leaveid = request.getParameter("leaveid");
+                                     
+                                    %>
                                     <div class="col s12 m12 l12">
                                         <div class="card">
                                             <div class="card-content">
@@ -25,7 +27,7 @@
 
                                                 <sql:query dataSource="${snapshot}" var="result">
                                                     SELECT l.leaveid as
-                                                    lid,e.empname,e.EmpId,e.id,e.Gender,e.mobile,e.email,l.LeaveType,l.ToDate,l.FromDate,l.Description,l.PostingDate,l.Status,l.AdminRemark,l.AdminRemarkDate
+                                                    lid,e.empname,e.EmpId,e.id,e.Gender,e.mobile,e.email,l.LeaveType,l.ToDate,l.FromDate,l.Description,l.PostingDate,l.Status
                                                     from leaves l, employee e
                                                     where l.empid=e.empid and l.leaveid=<%=leaveid %>;
 
@@ -112,7 +114,7 @@
                                                             </tr>
 
                                                             <tr>
-                                                                <td style="font-size:16px;"><b>Admin Remark: </b></td>
+                                                                <td style="font-size:16px;"><b></b></td>
                                                                 <td colspan="5">
                                                                     <c:choose>
                                                                         <c:when test="${row.AdminRemark=='NULL'}">

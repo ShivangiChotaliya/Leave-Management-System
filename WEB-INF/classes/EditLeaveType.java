@@ -19,12 +19,14 @@ public class EditLeaveType extends HttpServlet {
 
         String leavetype= req.getParameter("leavetype");
         String id  = req.getParameter("id"); 
+        int days = Integer.parseInt( req.getParameter("days"));
     
         int leavetypeid = Integer.parseInt(id); 
         
         LeaveTypeBean  editleavetypebean = new LeaveTypeBean();
         editleavetypebean.setLeaveTypeName(leavetype);
         editleavetypebean.setLeaveTypeId(leavetypeid);
+        editleavetypebean.setDays(days);
         
         
         

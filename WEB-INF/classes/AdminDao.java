@@ -371,17 +371,19 @@ public class AdminDao {
           
             String leavetype = bean.getLeaveTypeName();
             int id = bean.getLeaveTypeId();
+            int days = bean.getDays();
 
              DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
              Date dateobj = new Date(); 
              String date=df.format(dateobj);
+             
 
            
             Class.forName(JDBC_DRIVER);
 
             con = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            String sql = "UPDATE leavetype SET LeaveType='"+leavetype+"', CreationDate='"+date+"' where id='"+id+"' ";
+            String sql = "UPDATE leavetype SET LeaveType='"+leavetype+"', CreationDate='"+date+"', days='"+days+"' where id='"+id+"' ";
 
             PreparedStatement pst = con.prepareStatement(sql);
             

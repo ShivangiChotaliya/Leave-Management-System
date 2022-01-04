@@ -35,7 +35,7 @@ public class  EmployeeDao {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             Date dateobj = new Date(); 
             String date=df.format(dateobj);
-            int status = 0;
+            int status = -1;
             Class.forName(JDBC_DRIVER);
 
             con = DriverManager.getConnection(DB_URL, USER, PASS);

@@ -28,9 +28,9 @@ public class Leave extends HttpServlet {
         String empid = req.getParameter("eid");
         String leavetype = req.getParameter("leavetype");
         String fromdate = req.getParameter("fromdate");
-		String todate = req.getParameter("todate");
-		String description = req.getParameter("description");
-        
+        String todate = req.getParameter("todate");
+        String description = req.getParameter("description");
+            
     
       
              

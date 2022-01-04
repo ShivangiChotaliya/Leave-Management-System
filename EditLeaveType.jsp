@@ -22,9 +22,7 @@
                         <div class="card">
                             <div class="card-content">
                               
-                                <div class="row">
-                                   
-                                          
+                                <div class="row">                                          
 
                                         <div class="row">
                                             <div class="input-field col s12">
@@ -48,6 +46,9 @@
 
          <input id="leavetype" type="text"  class="validate" autocomplete="off" name="leavetype" value="<c:out value='${row.LeaveType}' />" required />
                                                 <label for="leavetype">Leave Type</label>
+
+        <input id="days" type="number"  class="validate" autocomplete="off" name="days" value="<c:out value='${row.days}' />" required />
+        <label for="days">Leave Type</label>
                                             </div>
   
                                         </c:forEach>

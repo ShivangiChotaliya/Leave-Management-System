@@ -59,7 +59,7 @@ public class Login extends HttpServlet {
             out.println("location='../index.jsp';");
             out.println("</script>");
           
-            res.sendRedirect("../index.jsp");
+           // res.sendRedirect("../index.jsp");
         }
     }
 }

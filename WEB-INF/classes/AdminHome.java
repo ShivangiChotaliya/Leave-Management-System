@@ -37,7 +37,7 @@ public class AdminHome extends HttpServlet {
                         res.sendRedirect("../changePassword.jsp?result=Password not changed");
                     }
                 } else {
-                    res.sendRedirect("../changePassword.jsp?result=New Password And Old Password is not same");
+                    res.sendRedirect("../changePassword.jsp?result=New Password And confirm Password is not same");
                 }
             } else {
                 res.sendRedirect("../changePassword.jsp?result=Current Password is invalid");
